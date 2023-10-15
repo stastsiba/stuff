@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  border-style: none;
+}
+button {
+  cursor: pointer;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.shose {
+  max-width: 1274px;
+  background-color: #191919;
+  margin: 0 auto;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+.shose__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.shose__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+.shose__inp-wrapper {
+  display: flex;
+  gap: 20px;
+}
+.shoce__inp-product {
+  background-color: black;
+  padding: 10px 20px;
+  color: #616e74;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.shoce__inp-price-wrapper {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.shoce__inp-price-count {
+  color: #f6f6f7;
+  font-size: 13px;
+  font-weight: 600;
+}
+.shoce__inp-price {
+  background-color: black;
+  padding: 10px 20px;
+  color: #616e74;
+  font-size: 13px;
+  font-weight: 400;
+}
+.shose__card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.shose__btn {
+}
+.shoce__btn-first,
+.shoce__btn-second,
+.shoce__btn-third {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #6c3eb8;
+  color: #fff;
+}
+.shoce__btn-second {
+}
+.shoce__btn-third {
+}
