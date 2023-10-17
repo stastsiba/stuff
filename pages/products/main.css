@@ -67,11 +67,9 @@ body {
   flex-wrap: wrap;
   gap: 15px;
 }
-.shose__btn {
-}
+
 .shoce__btn-first,
-.shoce__btn-second,
-.shoce__btn-third {
+.shoce__btn-second {
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -79,6 +77,5 @@ body {
   color: #fff;
 }
 .shoce__btn-second {
-}
-.shoce__btn-third {
+  background: #090909;
 }
