@@ -67,15 +67,20 @@ body {
   flex-wrap: wrap;
   gap: 15px;
 }
-
-.shoce__btn-first,
-.shoce__btn-second {
+.shose__btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.shose__btn {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  background: #6c3eb8;
+  background: #090909;
   color: #fff;
 }
-.shoce__btn-second {
-  background: #090909;
+
+.active {
+  background: #6c3eb8;
+  color: #fff;
 }

@@ -1,11 +1,13 @@
 const shoseCard = document.querySelector('.shose__card');
-const btnSecond = document.querySelector('.shoce__btn-second');
-const btnFirst = document.querySelector('.shoce__btn-first');
+const shoseBtn = document.querySelector('.shose__btn-wrapper');
+const inpSearch = document.querySelector('.shoce__inp-product');
+let page = 1;
 
-const getShoceCard = (start, end) => {
-  fetch(`http://localhost:3000/products?_limit=10&_start=${start}&_end=${end}`)
+const getShoceCard = (title = '') => {
+  fetch(`http://localhost:3000/products?_page=${page}&_limit=5&title_like=${title}`)
     .then((res) => res.json())
-    .then((res) =>
+    .then((res) => {
+      shoseCard.innerHTML = '';
       res.forEach((item) => {
         shoseCard.innerHTML += `        
         <div class="tranding__card-wrapper">
@@ -24,20 +26,41 @@ const getShoceCard = (start, end) => {
           </div>
         </div>
       </div>`;
-      }),
-    );
+      });
+    });
 };
-getShoceCard(0, 10);
+getShoceCard();
 
-btnSecond.addEventListener('click', () => {
-  shoseCard.innerHTML = '';
-  btnFirst.style.background = '#090909';
-  btnSecond.style.background = '#6c3eb8';
-  getShoceCard(10, 20);
-});
-btnFirst.addEventListener('click', () => {
-  btnSecond.style.background = '#090909';
-  btnFirst.style.background = '#6c3eb8';
-  shoseCard.innerHTML = '';
-  getShoceCard(0, 10);
+const getPageCount = (title = '') => {
+  fetch(`http://localhost:3000/products?title_like=${title}`)
+    .then((res) => res.json())
+    .then((res) => {
+      shoseBtn.innerHTML = '';
+      for (let i = 1; i <= Math.ceil(res.length / 5); i++) {
+        shoseBtn.innerHTML += `<button style="background: ${
+          page === i ? '#6c3eb8' : '#090909'
+        }" data-id = "${i}" class="shose__btn btn">${i}</button>`;
+      }
+      let paginationsBtns = document.querySelectorAll('.btn');
+      Array.from(paginationsBtns).forEach((item) => {
+        item.addEventListener('click', () => {
+          page = +item.dataset.id;
+          Array.from(paginationsBtns).forEach((el) => {
+            console.log(el);
+            if (el.dataset.id === item.dataset.id) {
+              el.style.background = '#6c3eb8';
+            } else {
+              el.style.background = '#090909';
+            }
+          });
+          getShoceCard();
+        });
+      });
+    });
+};
+getPageCount();
+
+inpSearch.addEventListener('input', (e) => {
+  getPageCount(inpSearch.value);
+  getShoceCard(inpSearch.value);
 });
